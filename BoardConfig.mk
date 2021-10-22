@@ -67,3 +67,6 @@ BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 
 # Disable scudo
 MALLOC_SVELTE := true
+
+
+PRODUCT_COPY_FILES +=  device/waydroid/waydroid/fstab.waydroid:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.waydroid
