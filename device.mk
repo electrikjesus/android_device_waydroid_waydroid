@@ -194,3 +194,7 @@ endif
 
 # Add agp-apps
 $(call inherit-product-if-exists, vendor/prebuilts/agp-apps/agp-apps.mk)
+
+# foss apps
+$(call inherit-product-if-exists, vendor/foss/foss.mk)
+
