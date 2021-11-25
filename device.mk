@@ -191,3 +191,6 @@ PRODUCT_PACKAGES += \
 ifneq ($(filter %_waydroid_x86 %_waydroid_x86_64,$(TARGET_PRODUCT)),)
 PRODUCT_EXTRA_VNDK_VERSIONS := 28
 endif
+
+# Add agp-apps
+$(call inherit-product-if-exists, vendor/prebuilts/agp-apps/agp-apps.mk)
