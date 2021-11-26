@@ -198,3 +198,29 @@ $(call inherit-product-if-exists, vendor/prebuilts/agp-apps/agp-apps.mk)
 # foss apps
 $(call inherit-product-if-exists, vendor/foss/foss.mk)
 
+
+# Get native bridge settings
+ifeq ($(patsubst %x86,,$(lastword $(TARGET_PRODUCT))),)
+$(call inherit-product-if-exists,$(LOCAL_PATH)/nativebridge/nativebridge.mk)
+endif
+
+ifeq ($(patsubst %x86_64,,$(lastword $(TARGET_PRODUCT))),)
+$(call inherit-product-if-exists,$(LOCAL_PATH)/nativebridge/nativebridge.mk)
+$(call inherit-product-if-exists,$(LOCAL_PATH)/nativebridge/nativebridge64.mk)
+endif
+
+ifeq ($(USE_LIBNDK_TRANSLATION_NB),true)
+$(call inherit-product-if-exists, vendor/google/emu-x86/target/libndk_translation.mk)
+$(call inherit-product-if-exists, vendor/google/emu-x86/target/widevine.mk)
+$(call inherit-product-if-exists, vendor/google/emu-x86/target/native_bridge_arm_on_x86.mk)
+NDK_TRANSLATION_PREINSTALL := google
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.nativebridge=1
+endif
+
+ifeq ($(USE_CROS_HOUDINI_NB),true)
+$(call inherit-product-if-exists, vendor/google/chromeos-x86/target/houdini_system.mk)
+#~ $(call inherit-product-if-exists, vendor/google/chromeos-x86/target/houdini_vendor.mk)
+$(call inherit-product-if-exists, vendor/google/chromeos-x86/target/widevine.mk)
+$(call inherit-product-if-exists, vendor/google/chromeos-x86/target/native_bridge_arm_on_x86.mk)
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.nativebridge=1
+endif

@@ -74,5 +74,17 @@ endif
 # Disable scudo
 MALLOC_SVELTE := true
 
-
 PRODUCT_COPY_FILES +=  device/waydroid/waydroid/fstab.waydroid:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.waydroid
+
+BUILD_ARM_FOR_X86 := $(WITH_NATIVE_BRIDGE)
+
+ifeq ($(USE_LIBNDK_TRANSLATION_NB),true)
+-include vendor/google/emu-x86/board/native_bridge_arm_on_x86.mk
+endif
+
+ifeq ($(USE_CROS_HOUDINI_NB),true)
+-include vendor/google/chromeos-x86/board/native_bridge_arm_on_x86.mk
+endif
+
+COMPATIBILITY_ENHANCEMENT_PACKAGE := true
+PRC_COMPATIBILITY_PACKAGE := true
