@@ -91,9 +91,11 @@ PRODUCT_PACKAGES += \
 # Stagefright FFMPEG plugins
 PRODUCT_PACKAGES += \
     i965_drv_video \
-    libffmpeg_extractor \
     libffmpeg_omx \
     media_codecs_ffmpeg.xml
+    
+PRODUCT_PACKAGES += \
+    libffmpeg_extractor
 
 # Third party apps
 PRODUCT_PACKAGES += \
