@@ -221,8 +221,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.nativebridge=1
 endif
 
 ifeq ($(USE_CROS_HOUDINI_NB),true)
-$(call inherit-product-if-exists, vendor/google/chromeos-x86/target/houdini_system.mk)
-#~ $(call inherit-product-if-exists, vendor/google/chromeos-x86/target/houdini_vendor.mk)
+$(call inherit-product-if-exists, vendor/google/chromeos-x86/target/houdini.mk)
 $(call inherit-product-if-exists, vendor/google/chromeos-x86/target/widevine.mk)
 $(call inherit-product-if-exists, vendor/google/chromeos-x86/target/native_bridge_arm_on_x86.mk)
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.nativebridge=1
