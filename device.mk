@@ -225,3 +225,6 @@ PRODUCT_PACKAGES += \
 ifeq ($(LINEAGE_BUILDTYPE), foss)
 $(call inherit-product, vendor/foss/foss.mk)
 endif
+
+$(call inherit-product-if-exists, vendor/agp-apps/agp-apps.mk)
+$(call inherit-product-if-exists, vendor/bass/branding.mk)
